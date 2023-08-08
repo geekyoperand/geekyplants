@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const MongoClient = require("mongodb").MongoClient;
+// const MongoClient = require("mongodb").MongoClient;
 
 const mongoUrl = "mongodb+srv://aery:icu4u24me@cluster0.lglnz.mongodb.net/";
 const dbName = "Nitin_User";
@@ -26,12 +26,12 @@ app.post("/api/saveData", async (req, res) => {
 
     try {
         if (!data) throw Error("Data is empty");
-        const client = await MongoClient.connect(mongoUrl);
-        const db = client.db(dbName);
+        // const client = await MongoClient.connect(mongoUrl);
+        // const db = client.db(dbName);
         const collection = db.collection("myCollection"); // Replace with your desired collection name
 
         const result = await collection.insertOne(data);
-        client.close();
+        // client.close();
 
         console.log("Data saved to MongoDB:", JSON.stringify(result));
         res.status(200).json({ message: "Data saved successfully." });
